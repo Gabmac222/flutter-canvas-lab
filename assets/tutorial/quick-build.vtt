@@ -1,0 +1,13 @@
+WEBVTT
+
+00:00:00.059 --> 00:00:03.104
+1 · A widget is one piece of a screen. Click Text in the library on the left.
+
+00:00:03.104 --> 00:00:06.229
+2 · Select the text. Its settings appear on the right. Change the words.
+
+00:00:06.229 --> 00:00:09.360
+3 · A property is a setting. Change Size to 32 to make the greeting bigger.
+
+00:00:09.360 --> 00:00:14.720
+You did it! Expand canvas for a closer look. Your greeting is a Text widget inside a Column.

@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f8fafc" />
+    <title>Flutter Canvas Lab · Build. See. Understand.</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.min.css" />
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="appearance.min.js"></script>
+    <script defer src="app.min.js"></script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="#" class="brand" aria-label="Flutter Canvas Lab home"
+        ><span class="brand-mark">f<span>›</span></span
+        ><span
+          >flutter<span class="brand-light"> / canvas lab</span
+          ><small>THE VISUAL LEARNING LAB</small></span
+        ></a
+      >
+      <nav class="main-nav" aria-label="Workspace">
+        <button data-view="journey">Start here &amp; demos</button>
+        <button class="active" data-view="designer">Designer</button
+        ><button data-view="tutorials">Widget &amp; icon guide</button>
+        <button data-view="learn">
+          Learn Flutter <span class="pill">08</span></button
+        ><button data-view="lab">Practice Lab</button
+        ><button data-view="reference">HTML ↔ Flutter</button
+        ><button data-view="vscode">Run in VS Code</button>
+      </nav>
+      <div class="header-actions">
+        <label class="editor-theme-label" for="editor-theme"
+          >Editor theme<select id="editor-theme" aria-label="Editor theme">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="midnight">Midnight</option>
+            <option value="warm">Warm paper</option>
+            <option value="system">System</option>
+          </select></label
+        >
+        <span id="save-status" class="save-status">Saved locally</span
+        ><button
+          class="icon-button header-help"
+          id="help-button"
+          title="Getting started and keyboard shortcuts"
+          aria-label="Getting started help"
+        >
+          <span class="mi" data-icon="help_outline"></span></button
+        ><button class="button light" id="project-button">
+          <span class="mi" data-icon="folder_open"></span> Project</button
+        ><button class="button mint" id="export-button">
+          <span class="mi" data-icon="code"></span> Export
+        </button>
+      </div>
+    </header>
+    <div class="recovery-notice" id="recovery-notice" hidden role="status">
+      <p>
+        <strong>A saved project needs recovery.</strong> The original data was
+        kept. Download it, or open your last project JSON backup.
+      </p>
+      <button class="button" id="recover-project">Download recovery copy</button
+      ><button
+        class="icon-button"
+        id="dismiss-recovery"
+        aria-label="Dismiss recovery notice"
+      >
+        ×
+      </button>
+    </div>
+    <div class="storage-notice" id="storage-notice" hidden role="status">
+      <p>
+        <strong>This browser is not saving your changes.</strong> Download a
+        project JSON backup before closing this page.
+      </p>
+      <button class="button" id="save-session-json">Save project JSON</button>
+    </div>
+    <div class="tab-notice" id="tab-notice" hidden role="status">
+      <p>
+        <strong>This project changed in another tab.</strong> Automatic saving
+        is paused here so neither version is silently overwritten.
+      </p>
+      <button class="button" id="load-other-tab">
+        Load other tab’s version</button
+      ><button class="button" id="keep-this-tab">
+        Keep this tab’s version
+      </button>
+    </div>
+    <main id="designer-view" class="workspace">
+      <aside class="left-panel panel" aria-label="Widget library and tree">
+        <section
+          id="interaction-map"
+          hidden
+          aria-label="Interactions in your design"
+        ></section>
+        <div class="panel-title">
+          <h2>Widgets</h2>
+          <span class="tag">WIDGETS</span>
+        </div>
+        <div class="left-tabs tabbar" role="tablist" aria-label="Library">
+          <button
+            class="active"
+            id="widgets-tab"
+            role="tab"
+            aria-controls="library"
+            aria-selected="true"
+            data-library="widgets"
+          >
+            Widgets</button
+          ><button
+            id="icons-tab"
+            role="tab"
+            aria-controls="library"
+            aria-selected="false"
+            tabindex="-1"
+            data-library="icons"
+          >
+            Icons
+          </button>
+        </div>
+        <div class="add-target" id="add-target" aria-live="polite"></div>
+        <label class="add-position-label" for="add-position"
+          >Place new widgets
+          <select id="add-position">
+            <option value="auto">In selected group (auto)</option>
+            <option value="inside">Inside selection</option>
+            <option value="before">Before selection</option>
+            <option value="after">After selection</option>
+          </select>
+        </label>
+        <div class="search-wrap">
+          <span class="mi" data-icon="search"></span
+          ><input
+            id="library-search"
+            type="search"
+            placeholder="Search widgets…"
+            aria-label="Search library"
+          /><kbd>/</kbd>
+        </div>
+        <div
+          id="library"
+          class="library"
+          role="tabpanel"
+          aria-labelledby="widgets-tab"
+        ></div>
+        <div class="tree-section">
+          <div class="section-heading">
+            <h2>Layers · widget tree</h2>
+            <span id="node-count" class="muted"></span>
+          </div>
+          <p class="tiny muted">
+            Drag between widgets to reorder, or use Move to… above the canvas.
+          </p>
+          <div id="tree" class="tree" aria-label="Widget hierarchy"></div>
+        </div>
+        <button class="lesson-nudge" data-open-lesson="0">
+          <span class="mi" data-icon="school"></span
+          ><span
+            >Coming from HTML + Tailwind?<small
+              >Start with what you already know →</small
+            ></span
+          >
+        </button>
+      </aside>
+      <section class="center-panel" aria-label="Design canvas">
+        <div class="designer-start">
+          <div class="project-label">
+            <span class="project-dot"></span
+            ><strong id="project-title">My first Flutter screen</strong
+            ><span class="muted">/ Home</span>
+          </div>
+          <div class="designer-help-actions">
+            <button class="button compact" data-open-beginner>
+              Watch a quick guide</button
+            ><button
+              class="button mint compact"
+              id="walkthrough-toggle"
+              aria-expanded="false"
+              aria-controls="walkthrough"
+            >
+              <span class="mi" data-icon="school"></span>Tutorial mode
+            </button>
+          </div>
+        </div>
+        <div class="beginner-mobile-tools" aria-label="Find designer tools">
+          <button class="button compact" data-designer-jump="widgets">
+            Add widgets ↓
+          </button>
+          <button class="button compact" data-designer-jump="styler">
+            Edit settings ↓
+          </button>
+        </div>
+        <section
+          id="walkthrough"
+          class="walkthrough"
+          aria-label="Build a screen tutorial"
+          hidden
+        ></section>
+        <div class="canvas-toolbar">
+          <div class="toolbar-actions">
+            <button
+              class="icon-button"
+              id="undo"
+              title="Undo (Ctrl/⌘ Z)"
+              aria-label="Undo"
+            >
+              <span class="mi" data-icon="undo"></span></button
+            ><button
+              class="icon-button"
+              id="redo"
+              title="Redo (Ctrl/⌘ Shift Z)"
+              aria-label="Redo"
+            >
+              <span class="mi" data-icon="redo"></span></button
+            ><span class="toolbar-divider"></span
+            ><button class="button compact" id="blank-button">
+              Start from scratch
+            </button>
+            <button class="button compact" id="designer-export">Export</button>
+            <button class="button compact" data-open-backend>Backend</button>
+            <button class="button compact" id="template-button">
+              <span class="mi" data-icon="dashboard"></span> Templates
+            </button>
+          </div>
+        </div>
+        <div class="canvas-controls">
+          <div class="segmented" aria-label="Canvas mode">
+            <button id="design-mode" class="active">
+              <span class="mi" data-icon="touch_app"></span> Design</button
+            ><button id="preview-mode">
+              <span class="mi" data-icon="play_arrow"></span> Interact
+            </button>
+          </div>
+          <button class="button compact" id="reset-preview" hidden>
+            Reset values
+          </button>
+          <div class="device-controls">
+            <div
+              class="device-family"
+              role="group"
+              aria-label="Device category"
+            >
+              <button
+                data-device-family="phone"
+                aria-pressed="true"
+                title="Design for phones"
+              >
+                <span class="mi" data-icon="smartphone"></span>Phone
+              </button>
+              <button
+                data-device-family="tablet"
+                aria-pressed="false"
+                title="Design for tablets"
+              >
+                <span class="mi" data-icon="crop_square"></span>Tablet
+              </button>
+              <button
+                data-device-family="desktop"
+                aria-pressed="false"
+                title="Design for desktop and PC"
+              >
+                <span class="mi" data-icon="laptop"></span>PC
+              </button>
+            </div>
+            <label class="device-select-label" for="device-size"
+              >Artboard
+              <select id="device-size">
+                <optgroup label="Phone">
+                  <option value="320">Small phone · 320 × 640</option>
+                  <option value="375" selected>Phone · 375 × 742</option>
+                  <option value="430">Large phone · 430 × 932</option>
+                </optgroup>
+                <optgroup label="Tablet">
+                  <option value="600">Small tablet · 600 × 960</option>
+                  <option value="768">Tablet · 768 × 1024</option>
+                  <option value="1024">Large tablet · 1024 × 1366</option>
+                </optgroup>
+                <optgroup label="Desktop / PC">
+                  <option value="1280">Laptop · 1280 × 800</option>
+                  <option value="1440">Desktop · 1440 × 900</option>
+                  <option value="1920">Full HD · 1920 × 1080</option>
+                </optgroup>
+              </select>
+            </label>
+            <button
+              class="icon-button"
+              id="rotate-device"
+              aria-label="Rotate artboard"
+              title="Swap artboard width and height"
+            >
+              <span class="mi" data-icon="wrap_text"></span>
+            </button>
+            <label class="device-select-label" for="canvas-zoom"
+              >Zoom
+              <select id="canvas-zoom">
+                <option value="fit" selected>Fit screen</option>
+                <option value="width">Fit width</option>
+                <option value="0.25">25%</option>
+                <option value="0.5">50%</option>
+                <option value="0.75">75%</option>
+                <option value="0.85">85%</option>
+                <option value="1">100% · actual size</option>
+                <option value="1.25">125%</option>
+                <option value="1.5">150%</option>
+                <option value="2">200%</option>
+              </select>
+            </label>
+          </div>
+          <div class="canvas-view-actions">
+            <button
+              class="button compact"
+              id="toggle-code"
+              aria-expanded="false"
+              aria-controls="code-panel"
+            >
+              Show code
+            </button>
+            <button
+              class="button compact"
+              id="focus-styler"
+              aria-expanded="false"
+              aria-controls="styler-panel"
+              hidden
+            >
+              Show styler
+            </button>
+            <button
+              class="button compact mint"
+              id="expand-canvas"
+              aria-pressed="false"
+            >
+              <span class="mi" data-icon="open_in_full"></span
+              ><span>Expand canvas</span>
+            </button>
+          </div>
+        </div>
+        <div
+          id="interaction-feedback"
+          class="interaction-feedback"
+          role="status"
+          hidden
+        ></div>
+        <section
+          id="placement-bar"
+          class="placement-bar"
+          aria-label="Widget placement"
+        ></section>
+        <section
+          id="placement-picker"
+          class="placement-picker"
+          aria-label="Move selected widget"
+          hidden
+        >
+          <div>
+            <strong id="placement-source">Move widget</strong
+            ><button class="inline-button" id="cancel-placement">Cancel</button>
+          </div>
+          <label for="placement-destination"
+            >Destination<select id="placement-destination"></select
+          ></label>
+          <label for="placement-position"
+            >Position<select id="placement-position">
+              <option value="before">Before destination</option>
+              <option value="after">After destination</option>
+              <option value="inside">Inside destination</option>
+            </select></label
+          >
+          <p id="placement-help"></p>
+          <button class="button mint" id="apply-placement">Move here</button>
+        </section>
+        <details id="scratch-guide" class="scratch-guide">
+          <summary>Build your first screen · from scratch</summary>
+          <div id="scratch-steps"></div>
+        </details>
+        <div id="practice-strip" class="practice-strip" hidden></div>
+        <div class="canvas-scroll">
+          <div class="canvas-intro">
+            <span class="eyebrow">YOUR IDEA, ONE WIDGET AT A TIME</span>
+            <h1>Start with a blank canvas.</h1>
+            <p>
+              Add a widget from the left. Select it here. Change its settings on
+              the right.
+            </p>
+            <button class="button" data-open-beginner="build">
+              New here? Watch your first screen →
+            </button>
+          </div>
+          <div class="phone-space" id="phone-space">
+            <div class="phone" id="phone" role="group">
+              <div class="desktop-chrome" aria-hidden="true">
+                <span>● ● ●</span><span>Flutter app preview</span
+                ><span>─ □ ×</span>
+              </div>
+              <div class="phone-status">
+                <strong>9:41</strong><span class="phone-camera"></span>
+                <div>
+                  <span class="mi" data-icon="signal_cellular_alt"></span
+                  ><span class="mi" data-icon="wifi"></span
+                  ><span class="mi" data-icon="battery_full"></span>
+                </div>
+              </div>
+              <div class="phone-appbar" id="phone-appbar"></div>
+              <div id="phone-body" class="phone-body"></div>
+              <div class="home-indicator"></div>
+              <div
+                id="preview-snackbar"
+                class="preview-snackbar"
+                role="status"
+              ></div>
+            </div>
+          </div>
+          <div class="canvas-caption">
+            <span class="live-dot"></span
+            ><span id="mode-caption"
+              >Design mode · click any widget to explore it</span
+            >
+          </div>
+        </div>
+        <section
+          class="code-dock"
+          id="code-panel"
+          aria-label="Generated code"
+          hidden
+        >
+          <div class="code-toolbar">
+            <div class="code-tabs">
+              <button class="active" data-code="dart">Flutter / Dart</button
+              ><button data-code="html">HTML + Tailwind</button>
+            </div>
+            <div>
+              <span id="code-scope" class="tiny muted">Selected widget</span
+              ><button
+                class="icon-button"
+                id="copy-code"
+                title="Copy displayed code"
+                aria-label="Copy displayed code"
+              >
+                <span class="mi" data-icon="content_copy"></span></button
+              ><button
+                class="icon-button"
+                id="expand-code"
+                title="Expand code"
+                aria-label="Expand code"
+              >
+                <span class="mi" data-icon="open_in_full"></span>
+              </button>
+            </div>
+          </div>
+          <pre id="code-preview" tabindex="0"></pre>
+        </section>
+        <footer class="canvas-footer">
+          <span
+            ><span class="mi" data-icon="info_outline"></span> Browser
+            approximation · export to run in Flutter</span
+          ><span id="artboard-status" aria-live="polite"
+            >375 × 742 · Fit screen</span
+          >
+        </footer>
+      </section>
+      <aside class="right-panel panel" id="styler-panel" aria-label="UI styler">
+        <div class="inspector-heading">
+          <div class="styler-title-row">
+            <button class="button compact" id="close-focus-styler" hidden>
+              Close styler
+            </button>
+            <span class="eyebrow">SELECTED WIDGET</span
+            ><button
+              class="button compact"
+              id="expand-styler"
+              aria-pressed="false"
+              title="Give the styling controls more room"
+            >
+              Widen styler
+            </button>
+          </div>
+          <button class="button compact screen-style-button" id="screen-tab">
+            Screen theme &amp; layout
+          </button>
+          <div>
+            <h2 id="selected-title">Text</h2>
+            <span class="tag" id="selected-kind">CONTENT</span>
+          </div>
+        </div>
+        <div class="tabbar">
+          <button id="properties-tab" class="active">Properties</button>
+          <button id="actions-tab">Actions</button>
+          <button id="explain-tab" title="How this widget works">
+            Explain <span class="hint-dot"></span>
+          </button>
+          <button id="state-tab">Live state</button>
+        </div>
+        <div id="inspector" class="inspector"></div>
+      </aside>
+    </main>
+    <section
+      id="tutorials-view"
+      class="tutorials-view"
+      aria-label="Widget and icon tutorials"
+      hidden
+    ></section>
+    <section id="learn-view" class="learning-view" hidden></section>
+    <section id="reference-view" class="reference-view" hidden></section>
+    <section
+      id="lab-view"
+      class="lab-view"
+      hidden
+      aria-label="Practice Lab"
+    ></section>
+    <section
+      id="vscode-view"
+      class="vscode-view"
+      hidden
+      aria-label="Run your Flutter app in Visual Studio Code"
+    ></section>
+    <dialog id="modal"><div id="modal-content"></div></dialog>
+    <section
+      id="journey-view"
+      class="journey-view"
+      aria-label="Recorded tutorials and deployment guide"
+      hidden
+    ></section>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <input
+      type="file"
+      id="import-file"
+      accept="application/json,.json"
+      hidden
+    />
+  </body>
+</html>

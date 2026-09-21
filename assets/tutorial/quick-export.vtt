@@ -1,0 +1,16 @@
+WEBVTT
+
+00:00:00.049 --> 00:00:07.836
+1 · Make a small screen, then Export the complete project ZIP.
+
+00:00:07.836 --> 00:00:11.899
+2 · Extract the ZIP. Open the whole flutter_studio_app folder in VS Code.
+
+00:00:11.899 --> 00:00:16.939
+This website explains the steps. In VS Code, install the tools and run the app locally first.
+
+00:00:16.939 --> 00:00:22.112
+3 · Publish my app gives the next steps: build, preview, then publish to your Cloudflare account.
+
+00:00:22.112 --> 00:00:27.240
+Save the configuration beside pubspec.yaml. This clip downloads instructions; it does not publish.

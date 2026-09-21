@@ -1,0 +1,16 @@
+WEBVTT
+
+00:00:00.053 --> 00:00:03.102
+1 · Add ElevatedButton: Flutter’s filled button. Design mode selects it for editing.
+
+00:00:03.102 --> 00:00:07.739
+2 · Open Actions. Choose Increment a counter. This is what happens when pressed.
+
+00:00:07.739 --> 00:00:15.315
+3 · Switch to Interact. Now the button runs its action instead of being selected.
+
+00:00:15.315 --> 00:00:18.619
+The count is 2. onPressed is the callback: the function Flutter runs when you press.
+
+00:00:18.619 --> 00:00:24.080
+The numbered list finds controls. Reset values returns the count to zero.

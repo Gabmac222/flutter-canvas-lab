@@ -1,0 +1,22 @@
+WEBVTT
+
+00:00:01.615 --> 00:00:06.776
+1 · A backend stores information outside your screen. Start with the LOCAL practice box.
+
+00:00:06.776 --> 00:00:11.927
+2 · Alex is saved in this demo only. Change the input to Sam, then Load sample.
+
+00:00:11.927 --> 00:00:14.929
+Alex comes back. Loading reads the saved value instead of the current input.
+
+00:00:14.929 --> 00:00:23.656
+3 · Try Connection failed. A useful app explains the error and lets you retry.
+
+00:00:23.656 --> 00:00:27.484
+4 · Ready for a REAL service? Follow Setup in VS Code using your own Firebase project.
+
+00:00:27.484 --> 00:00:32.703
+5 · Download the Flutter files and follow BACKEND_SETUP.md. No service is connected here.
+
+00:00:32.703 --> 00:00:37.560
+Learn Firebase first, then Supabase and REST as alternatives. You do not need all three.

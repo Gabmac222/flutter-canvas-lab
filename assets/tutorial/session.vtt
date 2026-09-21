@@ -1,0 +1,31 @@
+WEBVTT
+
+00:00:00.057 --> 00:00:07.613
+01 · Start from scratch. Flutter screens are built one widget at a time.
+
+00:00:07.613 --> 00:00:15.553
+02 · Properties changes appearance. Set the heading to 32 pixels and bold.
+
+00:00:15.553 --> 00:00:24.857
+03 · A Row is like flex-row. Add words and an icon inside the same parent.
+
+00:00:24.857 --> 00:00:30.253
+Placement follows the parent layout. Left moves this icon before the text.
+
+00:00:30.253 --> 00:00:44.658
+04 · Add a button, then connect an action. A label alone does not create behavior.
+
+00:00:44.658 --> 00:00:56.037
+05 · Check the same design on a tablet and PC. Expand canvas gives you more room.
+
+00:00:56.037 --> 00:01:02.600
+06 · Export the complete project. The ZIP includes Dart, web setup, and VS Code settings.
+
+00:01:02.600 --> 00:01:05.801
+Open the extracted folder in VS Code. Follow the setup guide before publishing.
+
+00:01:05.801 --> 00:01:11.678
+Publish my app walks through build/web → local preview → your Cloudflare URL.
+
+00:01:11.678 --> 00:01:14.522
+Save wrangler.jsonc beside pubspec.yaml. Continue with the written publishing steps.
