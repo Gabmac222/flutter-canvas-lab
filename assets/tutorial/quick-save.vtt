@@ -1,0 +1,16 @@
+WEBVTT
+
+00:00:00.053 --> 00:00:10.401
+Add a heading: My saved dashboard. Project JSON keeps the widget tree editable. It is different from a Flutter code export.
+
+00:00:10.401 --> 00:00:18.923
+Open Project, then Save project JSON. Keep the downloaded file somewhere you can find it again.
+
+00:00:18.923 --> 00:00:25.968
+Change the heading to Temporary edit. The JSON file you downloaded still contains the earlier version.
+
+00:00:25.968 --> 00:00:38.234
+Open Project and choose Open project JSON. Select the downloaded file. This recorder selects it automatically; you use the file picker. Save current work before replacing it.
+
+00:00:38.234 --> 00:00:46.320
+Your original heading is back. Your turn: save and reopen your own design. Browser storage is convenient, but a downloaded backup travels with you.

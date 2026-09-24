@@ -1,0 +1,28 @@
+WEBVTT
+
+00:00:00.140 --> 00:00:08.991
+Imagine a study planner: students enter tasks, mark work complete, and use it on a phone. Flutter is one possible way to build that interactive app.
+
+00:00:08.991 --> 00:00:17.504
+Flutter is Google’s open-source UI toolkit. Dart is the language you write. The Flutter SDK includes tools to build, run, inspect, and test an application.
+
+00:00:17.504 --> 00:00:26.357
+A Column places children vertically. Text draws words. An Icon draws a symbol. An ElevatedButton adds a pressable control. You compose small widgets into a screen.
+
+00:00:26.357 --> 00:00:36.231
+HTML describes elements; Tailwind classes style them. In Flutter, Dart constructors describe widgets and their properties. Padding is often its own widget. These are learning comparisons, not interchangeable code.
+
+00:00:36.231 --> 00:00:47.464
+You can reuse interface and app logic across supported platforms. Widgets and themes help keep screens consistent. Hot reload often lets you inspect a Dart UI change quickly during development, while preserving state.
+
+00:00:47.464 --> 00:00:58.356
+Android, iOS, web, and desktop have different build tools, permissions, and input methods. Check plugin support, adapt your layout, and test each target. One codebase does not mean one untested layout everywhere.
+
+00:00:58.356 --> 00:01:11.625
+A task tracker, booking interface, or inventory tool can be a useful Flutter project. For a mostly text-based blog or school news site, consider HTML and web tools designed for documents and search. Start with your users and requirements.
+
+00:01:11.625 --> 00:01:25.918
+Canvas Lab previews widgets with HTML and exports Dart. It is not the Flutter runtime. Save your design JSON, export a Flutter project, then use the Flutter SDK in VS Code to check the real app. A backend is a separate choice.
+
+00:01:25.918 --> 00:01:38.760
+Name your user, one useful task, and the devices they use. Give one reason Flutter fits and one thing you still need to check. Then follow the next video to build your first screen from an empty canvas.

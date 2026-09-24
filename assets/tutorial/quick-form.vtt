@@ -1,0 +1,16 @@
+WEBVTT
+
+00:00:00.052 --> 00:00:10.285
+Add TextField. Give it the label Your name and a placeholder that explains what to enter.
+
+00:00:10.285 --> 00:00:21.326
+Add a Switch labeled Send study reminders. Then add an ElevatedButton labeled Review sign-up.
+
+00:00:21.326 --> 00:00:33.534
+Configure the button to show a dialog. This is feedback only: it does not validate input, create an account, or send reminders.
+
+00:00:33.534 --> 00:00:46.868
+Switch to Interact. Enter Alex, turn the reminders switch on, and press Review sign-up. These are temporary values in the preview.
+
+00:00:46.868 --> 00:00:56.720
+Reset values clears the text and restores the switch. Your turn: test both switch states, then describe what a real submission would still need.

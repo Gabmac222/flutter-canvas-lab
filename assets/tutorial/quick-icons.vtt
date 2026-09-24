@@ -1,0 +1,16 @@
+WEBVTT
+
+00:00:00.054 --> 00:00:11.086
+Add Icon. Choose the info_outline symbol and describe it as Course information. An Icon draws a symbol; it has no button action here.
+
+00:00:11.086 --> 00:00:20.717
+Now add IconButton. Choose info_outline and name its purpose: Show course information. The name helps keyboard and screen-reader users.
+
+00:00:20.717 --> 00:00:28.994
+Open Actions. Choose Show dialog and write the explanation that should appear after a press.
+
+00:00:28.994 --> 00:00:38.184
+Switch to Interact and press the info button. onPressed runs the callback. The dialog is the visible result.
+
+00:00:38.184 --> 00:00:46.080
+Your turn: use a different symbol and explain its action with a clear name. A familiar icon still needs understandable behavior.

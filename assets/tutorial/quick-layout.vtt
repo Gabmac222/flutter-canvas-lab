@@ -1,0 +1,19 @@
+WEBVTT
+
+00:00:00.074 --> 00:00:08.386
+Start with an empty screen. Add Text and change the heading to My study dashboard.
+
+00:00:08.386 --> 00:00:17.217
+Select the page Column in Layers, then add Row. Column stacks vertically; Row places its children horizontally.
+
+00:00:17.217 --> 00:00:30.189
+Add an Icon inside the Row. Select the Row again before adding Text so both widgets share the same parent.
+
+00:00:30.189 --> 00:00:36.485
+With the text selected, choose Left. The text moves before the icon without dragging.
+
+00:00:36.485 --> 00:00:49.297
+Select the Row and set its child spacing to 24. This designer shares Row width with Expanded; plain Flutter Rows do not wrap automatically.
+
+00:00:49.297 --> 00:00:57.320
+Your turn: keep the heading above the Row, place the icon after the text, and explain which widget is the parent.
