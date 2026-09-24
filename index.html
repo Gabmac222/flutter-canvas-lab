@@ -4,11 +4,15 @@
     <meta charset="utf-8" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
     <meta name="theme-color" content="#f8fafc" />
     <title>Flutter Canvas Lab · Build. See. Understand.</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.min.css" />
+    
     
     
     
@@ -33,7 +37,7 @@
     
     
   </head>
-  <body>
+  <body data-workspace="designer">
     <header class="topbar">
       <a href="#" class="brand" aria-label="Flutter Canvas Lab home"
         ><span class="brand-mark">f<span>›</span></span
@@ -42,6 +46,14 @@
           ><small>THE VISUAL LEARNING LAB</small></span
         ></a
       >
+      <button
+        class="button phone-only"
+        id="phone-menu"
+        aria-expanded="false"
+        aria-controls="header-actions"
+      >
+        Menu
+      </button>
       <nav class="main-nav" aria-label="Workspace">
         <button data-view="journey">Start here &amp; demos</button>
         <button class="active" data-view="designer">Designer</button
@@ -52,7 +64,7 @@
         ><button data-view="reference">HTML ↔ Flutter</button
         ><button data-view="vscode">Run in VS Code</button>
       </nav>
-      <div class="header-actions">
+      <div class="header-actions" id="header-actions">
         <label class="editor-theme-label" for="editor-theme"
           >Editor theme<select id="editor-theme" aria-label="Editor theme">
             <option value="light">Light</option>
@@ -109,8 +121,42 @@
         Keep this tab’s version
       </button>
     </div>
-    <main id="designer-view" class="workspace">
-      <aside class="left-panel panel" aria-label="Widget library and tree">
+    <main id="designer-view" class="workspace" data-phone-panel="canvas">
+      <nav class="phone-tools" aria-label="Designer tools">
+        <button
+          data-phone-panel="canvas"
+          aria-pressed="true"
+          aria-controls="design-canvas"
+        >
+          <span class="mi" data-icon="smartphone"></span>Canvas
+        </button>
+        <button
+          data-phone-panel="add"
+          aria-pressed="false"
+          aria-controls="widget-library"
+        >
+          <span class="mi" data-icon="add"></span>Add
+        </button>
+        <button
+          data-phone-panel="layers"
+          aria-pressed="false"
+          aria-controls="widget-library"
+        >
+          <span class="mi" data-icon="layers"></span>Layers
+        </button>
+        <button
+          data-phone-panel="style"
+          aria-pressed="false"
+          aria-controls="styler-panel"
+        >
+          <span class="mi" data-icon="tune"></span>Style
+        </button>
+      </nav>
+      <aside
+        id="widget-library"
+        class="left-panel panel"
+        aria-label="Widget library and tree"
+      >
         <section
           id="interaction-map"
           hidden
@@ -166,13 +212,15 @@
           role="tabpanel"
           aria-labelledby="widgets-tab"
         ></div>
+        <div id="phone-layer-tools" class="phone-only"></div>
         <div class="tree-section">
           <div class="section-heading">
             <h2>Layers · widget tree</h2>
             <span id="node-count" class="muted"></span>
           </div>
           <p class="tiny muted">
-            Drag between widgets to reorder, or use Move to… above the canvas.
+            Select a widget, then use Move to… to choose its position. On a
+            computer, you can also drag between widgets.
           </p>
           <div id="tree" class="tree" aria-label="Widget hierarchy"></div>
         </div>
@@ -185,7 +233,11 @@
           >
         </button>
       </aside>
-      <section class="center-panel" aria-label="Design canvas">
+      <section
+        id="design-canvas"
+        class="center-panel"
+        aria-label="Design canvas"
+      >
         <div class="designer-start">
           <div class="project-label">
             <span class="project-dot"></span
@@ -219,7 +271,7 @@
           aria-label="Build a screen tutorial"
           hidden
         ></section>
-        <div class="canvas-toolbar">
+        <div class="canvas-toolbar" id="canvas-toolbar">
           <div class="toolbar-actions">
             <button
               class="icon-button"
@@ -257,7 +309,15 @@
           <button class="button compact" id="reset-preview" hidden>
             Reset values
           </button>
-          <div class="device-controls">
+          <button
+            class="button compact phone-only"
+            id="phone-options"
+            aria-expanded="false"
+            aria-controls="canvas-toolbar device-controls canvas-view-actions"
+          >
+            Canvas options
+          </button>
+          <div class="device-controls" id="device-controls">
             <div
               class="device-family"
               role="group"
@@ -329,7 +389,7 @@
               </select>
             </label>
           </div>
-          <div class="canvas-view-actions">
+          <div class="canvas-view-actions" id="canvas-view-actions">
             <button
               class="button compact"
               id="toggle-code"
@@ -401,8 +461,11 @@
             <span class="eyebrow">YOUR IDEA, ONE WIDGET AT A TIME</span>
             <h1>Start with a blank canvas.</h1>
             <p>
-              Add a widget from the left. Select it here. Change its settings on
-              the right.
+              Choose a widget, select it on the canvas, then change its
+              settings. On a phone, use Add, Layers, and Style below.
+            </p>
+            <p class="phone-only phone-empty-tip">
+              Tap Add below to start. Use Style to edit a widget.
             </p>
             <button class="button" data-open-beginner="build">
               New here? Watch your first screen →
